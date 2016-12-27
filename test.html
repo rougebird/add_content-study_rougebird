@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<style>
+			.shadowNfont
+			{
+				text-shadow: 0 1px 3px rgba(0,0,0, .5);
+				font-family:"courier new";
+				font-size:40px;
+				font-weight:bold;				
+			}
+		</style>
+		<script>
+			function aj_open() 
+			{
+    			document.getElementById("mySidenav").style.display = "block";
+			}
+			function aj_close() 
+			{
+    			document.getElementById("mySidenav").style.display = "none";
+			}
+		</script>
+	</head>
+	<body >
+	
+		<div class="w3-card-4 w3-round-large w3-center w3-light-grey" style="margin-left:20px;margin-right: 20px">
+			<h1 class="shadowNfont w3-xxxlarge">rougebird</h1> 
+			<ul class="w3-navbar w3-indigo w3-card-4 w3-large w3-round">
+    			<li><a href="#">Home</a></li>
+    			<li><a href="#">Link 1</a></li>
+   			 <li><a href="#">Link 2</a></li>
+  			</ul>
+		</div>
+	
+	<!-- Vertical Navigation Bar
+	<nav class="w3-sidenav w3-collapse w3-light-grey w3-card-2 w3-animate-left" style="width:240px;" id="mySidenav">
+  		<a href="javascript:void(0)" onclick="aj_close()" class="w3-closenav w3-large w3-hide-large">
+  		Close &times;</a>
+  		<a href="#">C# .NET Programming Reference Material</a>
+  		<a href="#">System Administration Reference Material</a>
+  		<a href="#">System Administration Lab Experiments</a>
+  		<a href="#">Link 4</a>
+  		<a href="#">Link 5</a> 
+	</nav>
+	-->
+
+	<div class="w3-main" style="margin-left:20px;margin-right: 20px; margin-top: 5px">
+		<header class="w3-container w3-magenta">
+  			<!-- <span class="w3-opennav w3-xlarge w3-hide-large" onclick="aj_open()">&#9776;</span> -->
+  			<h2 >Study References</h2>
+		</header>
+
+		<div class="w3-container w3-card-2" id="content">
+  			<p>In this example, the side navigation will always be displayed on desktop computers and laptops (screens wider than 992px), and hidden on tablets and mobile phones (screens that are less than 992px wide).</p>
+  			<p>On tablets and mobile phones the side navigation is replaced with a menu icon that opens the navigation pane when clicked on: it will then overlay/sit on top of the page content.</p>
+ 			<p><b>Resize the browser window to understand how it works.</b></p>
+		</div>
+	</div>
+
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+	</body>
+	<footer class="w3-container w3-pale-blue w3-center w3-card-2" style="margin-left:20px;margin-right: 20px">
+    	<p class="w3-text-gray">rougebird.in</p>
+	</footer>
+    
+</html>

@@ -1,6 +1,6 @@
 <?php
 
-error_reporting(E_ALL & ~E_NOTICE);error_reporting(E_ALL & ~E_NOTICE);
+error_reporting(E_ALL & ~E_NOTICE);
 
 $servername = "localhost:3306";
 $username = "root";
@@ -28,10 +28,19 @@ if(mysqli_num_rows($result)>0)
 $title=$_POST[c_title];
 $desc=$_POST[c_desc];
 $link=$_POST[c_downLink];
-$type=$_POST[c_type];
+//$type=$_POST[c_type];
 $cat=$_POST[c_cat];
+$tab="";
 
-$sql="INSERT INTO `content_store` (`content_id`, `uname`, `content_up_date`, `content_title`, `content_desc`, `content_down_link`, `content_type`, `content_cat`) VALUES ('".$cid."', 'ajay', '".date("Y-m-d")."','".$title."', '".$desc."', '".$link."', '".$type."', '".$cat."')";
+switch($cat)
+{
+	case "SAM": $tab="content_SA_M";break;
+	case "SAL": $tab="content_SA_L";break;
+	case "CSM": $tab="content_CS_M";break;
+	case "MIS": $tab="content_store";break;
+}
+
+$sql="INSERT INTO `".$tab."` (`content_id`, `uname`, `content_up_date`, `content_title`, `content_desc`, `content_down_link`) VALUES ('".$cid."', 'ajay', '".date("Y-m-d")."','".$title."', '".$desc."', '".$link."')";
 
 //echo $cat;
 //echo $sql;
