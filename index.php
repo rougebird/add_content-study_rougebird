@@ -29,8 +29,8 @@
 			error_reporting(E_ALL & ~E_NOTICE);
 
 			$servername = "localhost:3306";
-			$username = "root";
-			$password = "01100125";
+			$username = "rb_addC_user";
+			$password = "1RkTxN);~U=6";
 
 			//Connecting to DB
 			$conn = mysqli_connect($servername,$username,$password,"study_content");
@@ -42,20 +42,7 @@
 	</head>
 	<body >
 	
-		<div class="w3-card-4 w3-round-large w3-center w3-light-grey" style="margin-left:20px;margin-right: 20px">
-			<h1 class="shadowNfont w3-xxxlarge">rougebird</h1> 
-			<ul class="w3-navbar w3-indigo w3-card-4 w3-large w3-round">
-    			<li><a href="index.php?cat=CSM">C# Reference Material</a></li>
-    			<li class="w3-dropdown-hover">
-    				<a href="#">System Administration</a>
-    				<div class="w3-dropdown-content w3-white w3-card-4">
-      					<a href="index.php?cat=SAM">Reference Material</a>
-      					<a href="index.php?cat=SAL">Lab Experiments</a>
-      				</div>
-  				</li>
-   			 	<li><a href="index.php?cat=MIS">Other</a></li>
-  			</ul>
-		</div>
+		<?php require 'menu.php';?>	
 	
 	
 	<div class="w3-main" style="margin-left:20px;margin-right: 20px; margin-top: 5px">
@@ -78,15 +65,15 @@
   				//echo $cat;
   				switch($cat)
 				{
-					case "SAM": $tab="content_SA_M"; 
+					case "SAM": $tab="content_sa_m"; 
 								echo "<h3>System Administration Reference Material</h3>";break;
-					case "SAL": $tab="content_SA_L"; 
+					case "SAL": $tab="content_sa_l"; 
 								echo "<h3>System Administration Lab Experiments</h3>"; break;
-					case "CSM": $tab="content_CS_M";
+					case "CSM": $tab="content_cs_m";
 								echo "<h3>C# .NET Programming Reference Material</h3>"; break;
 					case "MIS": $tab="content_store";
 								echo "<h3>Miscellaneous Reference Material</h3>";break;
-					default: $tab="content_CS_M";
+					default: $tab="content_cs_m";
 								echo "<h3>C# .NET Programming Reference Material</h3>"; break;
 				}
 				//echo $tab;

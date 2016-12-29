@@ -3,8 +3,8 @@
 error_reporting(E_ALL & ~E_NOTICE);
 
 $servername = "localhost:3306";
-$username = "root";
-$password = "01100125";
+$username = "rb_addC_user";
+$password = "1RkTxN);~U=6";
 
 //Connecting to DB
 $conn = mysqli_connect($servername,$username,$password,"study_content");
@@ -13,14 +13,7 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-//Getting content ID
-$sql0="SELECT * FROM content_store";
 
-$result=mysqli_query($conn, $sql0);
-if(mysqli_num_rows($result)>0)
-{
-	$cid=mysqli_num_rows($result)+1;
-}
 
 //echo $cid;
 
@@ -34,11 +27,25 @@ $tab="";
 
 switch($cat)
 {
-	case "SAM": $tab="content_SA_M";break;
-	case "SAL": $tab="content_SA_L";break;
-	case "CSM": $tab="content_CS_M";break;
+	case "SAM": $tab="content_sa_m";break;
+	case "SAL": $tab="content_sa_l";break;
+	case "CSM": $tab="content_cs_m";break;
 	case "MIS": $tab="content_store";break;
 }
+
+echo $tab. "<br/>". $cid;
+
+//Getting content ID
+$sql0="SELECT * FROM ".$tab;
+//echo $sql0;
+
+$result=mysqli_query($conn, $sql0);
+if(mysqli_num_rows($result)>0)
+{
+	$cid=mysqli_num_rows($result)+1;
+}
+else
+	$cid=1;
 
 $sql="INSERT INTO `".$tab."` (`content_id`, `uname`, `content_up_date`, `content_title`, `content_desc`, `content_down_link`) VALUES ('".$cid."', 'ajay', '".date("Y-m-d")."','".$title."', '".$desc."', '".$link."')";
 
