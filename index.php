@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+
+$_SESSION['url'] = $_SERVER['REQUEST_URI'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -14,16 +22,7 @@
 				font-weight:bold;				
 			}
 		</style>
-		<script>
-			function aj_open() 
-			{
-    			document.getElementById("mySidenav").style.display = "block";
-			}
-			function aj_close() 
-			{
-    			document.getElementById("mySidenav").style.display = "none";
-			}
-		</script>
+	
 		<?php
 
 			error_reporting(E_ALL & ~E_NOTICE);
@@ -45,11 +44,7 @@
 		<?php require 'menu.php';?>	
 	
 	
-	<div class="w3-main" style="margin-left:20px;margin-right: 20px; margin-top: 5px">
-		<header class="w3-container w3-magenta">
-  			<!-- <span class="w3-opennav w3-xlarge w3-hide-large" onclick="aj_open()">&#9776;</span> -->
-  			<h2 >Study References</h2>
-		</header>
+	<div class='w3-main' style='margin-left:20px;margin-right: 20px;'>
 		<form method="GET" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
 		<div class="w3-container" id="content">
   			<?php
@@ -66,18 +61,18 @@
   				switch($cat)
 				{
 					case "SAM": $tab="content_sa_m"; 
-								echo "<h3>System Administration Reference Material</h3>";break;
+								echo "<h5>System Administration Reference Material</h5>";break;
 					case "SAL": $tab="content_sa_l"; 
-								echo "<h3>System Administration Lab Experiments</h3>"; break;
+								echo "<h5>System Administration Lab Experiments</h5>"; break;
 					case "CSM": $tab="content_cs_m";
-								echo "<h3>C# .NET Programming Reference Material</h3>"; break;
+								echo "<h5>C# .NET Programming Reference Material</h5>"; break;
 					case "MIS": $tab="content_store";
-								echo "<h3>Miscellaneous Reference Material</h3>";break;
+								echo "<h5>Miscellaneous Reference Material</h5>";break;
 					default: $tab="content_cs_m";
-								echo "<h3>C# .NET Programming Reference Material</h3>"; break;
+								echo "<h5>C# .NET Programming Reference Material</h5>"; break;
 				}
 				//echo $tab;
-  				echo "<div class='w3-responsive w3-card-2' style='margin-top:10px'><table class='w3-table-all w3-hoverable' >";
+  				echo "<div class='w3-responsive w3-card-2 ' style='margin-top:5px'><table class='w3-table-all w3-hoverable w3-small' >";
   				echo "<tr><th>S.No</th><th>Date</th><th>Title</th><th>Description</th><th>Link</th></tr>";
   				$sql="SELECT * FROM `".$tab."`";
   				//echo $sql;
@@ -86,7 +81,7 @@
     				// output data of each row
     				while($row = mysqli_fetch_assoc($result)) {
         				echo "<tr>";
-        				echo "<td>" . $row["content_id"]. "</td><td>" . $row["content_up_date"]. "</td><td>" . $row["content_title"]. "</td><td>" . $row["content_desc"]. "</td><td><a class='w3-btn w3-blue w3-hover-red' href='". $row["content_down_link"]."' >Download <i class='fa fa-download'></i></a></td>";
+        				echo "<td >" . $row["content_id"]. "</td><td>" . $row["content_up_date"]. "</td><td>" . $row["content_title"]. "</td><td>" . $row["content_desc"]. "</td><td><a class='w3-btn w3-blue w3-hover-red w3-ripple  ' href='". $row["content_down_link"]."' >Download <i class='fa fa-download'></i></a></td>";
     					echo "</tr>";
     				}
 				} else {
@@ -103,8 +98,8 @@
 
 	
 	</body>
-	<footer class="w3-container w3-pale-blue w3-center w3-card-2" style="margin-left:20px;margin-right: 20px">
-    	<p><a href="http://study.rougebird.in/" class="w3-text-gray">rougebird.in</a></p>
+	<footer class="w3-container w3-pale-blue w3-center w3-card-2 w3-round-small" style="margin-left:20px;margin-right: 20px">
+    	<p><a href="http://rougebird.in/" class="w3-text-gray">rougebird.in</a></p>
 	</footer>
     
 </html>

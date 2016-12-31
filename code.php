@@ -1,3 +1,9 @@
+<?php
+session_start();
+$_SESSION['url'] = $_SERVER['REQUEST_URI'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -48,13 +54,9 @@
 	<body>
 		<?php require 'menu.php';?>	
 
-	<div class="w3-main" style="margin-left:20px;margin-right: 20px; margin-top: 5px">
-		<header class="w3-container w3-magenta">
-  			<!-- <span class="w3-opennav w3-xlarge w3-hide-large" onclick="aj_open()">&#9776;</span> -->
-  			<h2 >Study References</h2>
-		</header>
+	
 		<div class="w3-container" style="margin-left:25px;margin-right: 25px">
-			<h3>C# .NET Practicals (Code)</h3>
+			<h5>C# .NET Practicals (Code)</h5>
 			<div class="w3-accordion w3-light-grey w3-card-2">
     			<?php 
 
@@ -67,9 +69,9 @@
     				// output data of each row
     				while($row = mysqli_fetch_assoc($result)) 
     				{
-    					echo "<button onclick=\"myFunction('".$ce.$row["content_id"]."')\" class='w3-btn-block w3-left-align w3-teal w3-large'> <i class='fa fa-code' ></i>&nbsp;&nbsp;". $row["content_title"] ."&nbsp;&nbsp;&nbsp; <i class='fa fa-caret-down'></i></button>";
+    					echo "<button onclick=\"myFunction('".$ce.$row["content_id"]."')\" class='w3-btn-block w3-left-align w3-teal w3-medium'> <i class='fa fa-code' ></i>&nbsp;&nbsp;". $row["content_title"] ."&nbsp;&nbsp;&nbsp; <i class='fa fa-caret-down'></i></button>";
     					echo "<div id='".$ce.$row["content_id"]."' class='w3-accordion-content w3-container'>";
-    					echo $row["content_git_script"];
+    					echo $row["content_link"];
     					echo "</div>";
     				}
     			}
@@ -87,7 +89,7 @@
 	</div>
 	</body>
 	<br/><br/>
-	<footer class="w3-container w3-pale-blue w3-center w3-card-2" style="margin-left:20px;margin-right: 20px">
-    	<p><a href="http://study.rougebird.in/" class="w3-text-gray">rougebird.in</a></p>
+	<footer class="w3-container w3-pale-blue w3-center w3-card-2 w3-round-small" style="margin-left:20px;margin-right: 20px">
+    	<p><a href="http://rougebird.in/" class="w3-text-gray">rougebird.in</a></p>
 	</footer>
 </html>
