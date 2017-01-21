@@ -10,7 +10,8 @@ $_SESSION['url'] = $_SERVER['REQUEST_URI'];
 		<meta charset="utf-8"> 
 		<title> rougebird - Study Content Page </title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+		<!-- <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">-->
+		<link rel="stylesheet" href="w3.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<script>
 			function myFunction(id) 
@@ -89,7 +90,5 @@ $_SESSION['url'] = $_SERVER['REQUEST_URI'];
 	</div>
 	</body>
 	<br/><br/>
-	<footer class="w3-container w3-pale-blue w3-center w3-card-2 w3-round-small" style="margin-left:20px;margin-right: 20px">
-    	<p><a href="http://rougebird.in/" class="w3-text-gray">rougebird.in</a></p>
-	</footer>
+	<?php require 'footer.php';?>
 </html>

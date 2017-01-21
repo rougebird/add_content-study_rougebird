@@ -12,6 +12,7 @@ $_SESSION['url'] = $_SERVER['REQUEST_URI'];
 		<meta charset="utf-8"> 
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+		
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<style>
 			.shadowNfont
@@ -42,64 +43,52 @@ $_SESSION['url'] = $_SERVER['REQUEST_URI'];
 	<body >
 	
 		<?php require 'menu.php';?>	
-	
-	
-	<div class='w3-main' style='margin-left:20px;margin-right: 20px;'>
-		<form method="GET" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-		<div class="w3-container" id="content">
-  			<?php
-  				//$cat="CSM";
-  				
-  				if ($_SERVER["REQUEST_METHOD"] == "GET") {
-  						echo $cat;
-  						$cat = htmlspecialchars($_GET["cat"]);
-  				}
-  				
-  					
-  				$tab="";
-  				//echo $cat;
-  				switch($cat)
-				{
-					case "SAM": $tab="content_sa_m"; 
-								echo "<h5>System Administration Reference Material</h5>";break;
-					case "SAL": $tab="content_sa_l"; 
-								echo "<h5>System Administration Lab Experiments</h5>"; break;
-					case "CSM": $tab="content_cs_m";
-								echo "<h5>C# .NET Programming Reference Material</h5>"; break;
-					case "MIS": $tab="content_store";
-								echo "<h5>Miscellaneous Reference Material</h5>";break;
-					default: $tab="content_cs_m";
-								echo "<h5>C# .NET Programming Reference Material</h5>"; break;
-				}
-				//echo $tab;
-  				echo "<div class='w3-responsive w3-card-2 ' style='margin-top:5px'><table class='w3-table-all w3-hoverable w3-small' >";
-  				echo "<tr><th>S.No</th><th>Date</th><th>Title</th><th>Description</th><th>Link</th></tr>";
-  				$sql="SELECT * FROM `".$tab."`";
-  				//echo $sql;
-  				$result=mysqli_query($conn,$sql);
-  				if (mysqli_num_rows($result) > 0) {
-    				// output data of each row
-    				while($row = mysqli_fetch_assoc($result)) {
-        				echo "<tr>";
-        				echo "<td >" . $row["content_id"]. "</td><td>" . $row["content_up_date"]. "</td><td>" . $row["content_title"]. "</td><td>" . $row["content_desc"]. "</td><td><a class='w3-btn w3-blue w3-hover-red w3-ripple  ' href='". $row["content_down_link"]."' >Download <i class='fa fa-download'></i></a></td>";
-    					echo "</tr>";
-    				}
-				} else {
-    				echo "<tr class='w3-lime'><td colspan='5'>0 results - Content has not been uploaded yet..!</td></tr>";
-				}
-				echo "</table></div>";
-				mysqli_close($conn);
-  			?>
-  			<br/>
-  			
-		</div>
-		</form>
-	</div>
+		<div class="w3-main w3-card-2 w3-round" style="margin-left:20px;margin-right: 20px;">
+		<header class="w3-container" style="margin-left: 5px">
+    		<h5><b><i class="fa fa-dashboard"></i> Dashboard</b></h5>
+  		</header>
+  		<div class="w3-row-padding w3-margin-bottom">
+    		<div class="w3-quarter">
+      			<div class="w3-container w3-pink w3-padding-16">
+        			<div class="w3-left"><i class="fa fa-tags w3-xxxlarge"></i></div>
+        			<div class="w3-right">
+          				<h3>
+          					<?php
+          						//For nummber of categories
+          						$sql_cat="SELECT * FROM content_category";
+          						$result_cat=mysqli_query($conn,$sql_cat);
+          						$n_cat=mysqli_num_rows($result_cat);
+          						echo $n_cat;
+          					?>
+          				</h3>
+        			</div>
+        			<div class="w3-clear"></div>
+        			<h4>Categories</h4>
+      			</div>
+    		</div>
+    		
+    		<div class="w3-quarter">
+      			<div class="w3-container w3-blue-grey w3-padding-16">
+        			<div class="w3-left"><i class="fa fa-upload w3-xxxlarge"></i></div>
+        			<div class="w3-right">
+          				<h3>
+          					<?php
+          						//For total number of uploads
+          					?>
+          				</h3>
+        			</div>
+        			<div class="w3-clear"></div>
+        			<h4>Number of files uploaded</h4>
+      			</div>
+    		</div>
+    		<div class="w3-rest">
+    			<h5>Recent Uploads</h5>
+        			<table class="w3-table w3-striped w3-white">
+          			</table>
+          	</div>
+    	</div><br>
 
-	
+  		</div><br>
 	</body>
-	<footer class="w3-container w3-pale-blue w3-center w3-card-2 w3-round-small" style="margin-left:20px;margin-right: 20px">
-    	<p><a href="http://rougebird.in/" class="w3-text-gray">rougebird.in</a></p>
-	</footer>
-    
+	<?php require 'footer.php';?>
 </html>

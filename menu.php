@@ -3,21 +3,22 @@ echo "
 <div class='w3-card-4 w3-round-large w3-center w3-light-grey' style='margin-left:20px;margin-right: 20px'>
 			<h1 class='shadowNfont w3-xxlarge'>rougebird</h1> 
 			<ul class='w3-navbar w3-indigo w3-card-4 w3-small w3-round'>
-    			<li class='w3-dropdown-hover w3-indigo'>
+    			<li><a href='index.php'>Home</a></li>
+          <li class='w3-dropdown-hover w3-indigo'>
     				<a href='#'>C# .NET Programming</a>
     				<div class='w3-dropdown-content w3-white w3-card-4'>
-      					<a href='index.php?cat=CSM'>Reference Material</a>
+      					<a href='content.php?cat=CSM'>Reference Material</a>
       					<a href='code.php'>Practicals (Code)</a>
       				</div>
     			</li>
     			<li class='w3-dropdown-hover'>
     				<a href='#'>System Administration</a>
     				<div class='w3-dropdown-content w3-white w3-card-4'>
-      					<a href='index.php?cat=SAM'>Reference Material</a>
-      					<a href='index.php?cat=SAL'>Lab Experiments</a>
+      					<a href='content.php?cat=SAM'>Reference Material</a>
+      					<a href='content.php?cat=SAL'>Lab Experiments</a>
       				</div>
   				</li>
-   			 	<li><a href='index.php?cat=MIS'>Other</a></li>
+   			 	<li><a href='content.php?cat=MIS'>Other</a></li>
           ";
             if(isset($_SESSION["logged"]))
             {
@@ -35,6 +36,7 @@ echo "
                       <a href='#'><i class='fa fa-plus-circle' ></i>&nbsp;Add</a></a>
                       <div class='w3-dropdown-content w3-white w3-card-4'>
                         <a href='addContent.php'><i class='fa fa-plus-circle' ></i>&nbsp;Add Content</a></a>
+                        <a href='addCategory.php'><i class='fa fa-plus-circle' ></i>&nbsp;New Category</a></a>
                         
                       </div>
                     </li>";    

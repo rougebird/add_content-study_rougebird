@@ -1,5 +1,10 @@
 <?php
 session_start();
+if(!isset($_SESSION["logged"]) )
+{
+	$url="Error.php";
+	header("Location: http://" . $_SERVER['HTTP_HOST']. $url);
+}
 ?>
 
 <!DOCTYPE html>
@@ -8,7 +13,8 @@ session_start();
 		<meta charset="utf-8"> 
 		<title>Add content to study.rougebird.in</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+		<!-- <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">-->
+		<link rel="stylesheet" href="w3.css">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 		<style>
 			.shadowNfont
@@ -23,7 +29,7 @@ session_start();
 	<body>
 	<?php require 'menu.php';?>	
 	<div class='w3-main w3-card-4' style='margin-left:20px;margin-right: 20px;'><br>
-	<!--<?php //echo htmlspecialchars('addC.php');?>"-->
+	
 		<form class="w3-container w3-card-2" action="<?php echo htmlspecialchars('addC.php');?>" method="post" style='margin-left:20px;margin-right: 20px;'>
 			
 			<h3>Adding content</h3>
@@ -58,7 +64,5 @@ session_start();
 		<br>
 	</div><br>
 	</body>
-	<footer class="w3-container w3-pale-blue w3-center w3-card-2 w3-round-small" style="margin-left:20px;margin-right: 20px">
-    	<p><a href="http://rougebird.in/" class="w3-text-gray">rougebird.in</a></p>
-	</footer>
+	<?php require 'footer.php';?>
 </html>

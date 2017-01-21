@@ -21,30 +21,14 @@ if (!$conn) {
 }
 
 
-
 //echo $cid;
 
 //Inserting new content record into DB
-$title=$_POST[c_title];
-$desc=$_POST[c_desc];
-$link=$_POST[c_downLink];
-//$type=$_POST[c_type];
-$cat=$_POST[c_cat];
-$tab="";
-
-switch($cat)
-{
-	case "SAM": $tab="content_sa_m";break;
-	case "SAL": $tab="content_sa_l";break;
-	case "CSM": $tab="content_cs_m";break;
-	case "CSC": $tab="content_cs_c";break;
-	case "MIS": $tab="content_store";break;
-}
-
-echo $tab. "<br/>". $cid;
+$title=$_POST[cat_title];
+$desc=$_POST[cat_desc];
 
 //Getting content ID
-$sql0="SELECT * FROM ".$tab;
+$sql0="SELECT * FROM content_category";
 //echo $sql0;
 
 $result=mysqli_query($conn, $sql0);
@@ -61,7 +45,9 @@ else
 	$uname="stranger";
 
 
-	$sql="INSERT INTO `".$tab."` (`content_id`, `uname`, `content_up_date`, `content_title`, `content_desc`, `content_link`) VALUES ('".$cid."', '".$uname."', '".date("Y-m-d")."','".$title."', '".$desc."', '".$link."')";
+	$sql="INSERT INTO `content_category` (`category_id`, `category_code`, `category_name`, `category_desc`, `category_user`) VALUES ('".$cid."', 'cat".$cid."', '".$title."', '".$desc."', '".$uname."');";
+
+	$sql_creat_table="CREATE TABLE IF NOT EXISTS `content_cat".$cid."` (`category_id` int(11) NOT NULL, `category_code` varchar(20) NOT NULL, `category_name` varchar(50) NOT NULL,`category_desc` varchar(200) NOT NULL, `category_user` varchar(200), PRIMARY KEY (`category_id`)) ENGINE=InnoDB DEFAULT CHARSET=latin1;";
 
 //echo $cat;
 //echo $sql;
