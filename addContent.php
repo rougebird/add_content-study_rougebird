@@ -5,6 +5,18 @@ if(!isset($_SESSION["logged"]) )
 	$url="Error.php";
 	header("Location: http://" . $_SERVER['HTTP_HOST']. $url);
 }
+error_reporting(E_ALL & ~E_NOTICE);
+
+$servername = "localhost:3306";
+$username = "rb_addC_user";
+$password = "1RkTxN);~U=6";
+
+//Connecting to DB
+$conn = mysqli_connect($servername,$username,$password,"study_content");
+
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
 ?>
 
 <!DOCTYPE html>
@@ -50,11 +62,17 @@ if(!isset($_SESSION["logged"]) )
 				<label class="w3-label">Content Category: *</label><br>
 					<select class="w3-input w3-select w3-border" name="c_cat" style="width: 30%" required>
 						<option value=""></option>
-						<option value="CSM">C# .NET Material</option>
-						<option value="CSC">C# .NET Practicals</option>
-						<option value="SAM">SA Material</option>
-						<option value="SAL">SA Lab</option>
-						<option value="MIS">Miscellaneous</option>
+						<?php
+							$sql="SELECT * FROM `content_category`";
+							$result=mysqli_query($conn,$sql);
+  							if (mysqli_num_rows($result) > 0) {
+    						// output data of each row
+    							while($row = mysqli_fetch_assoc($result)) {
+        							echo "<option value='".$row["category_code"]."'>".$row["category_name"]."</option>";
+								}
+							  }
+							  mysqli_close($conn);
+						?>											
 					</select>	
 						<br>				
 				<input class="w3-btn w3-blue" type="submit"><br><br>

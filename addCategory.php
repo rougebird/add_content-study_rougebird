@@ -35,11 +35,19 @@ if(!isset($_SESSION["logged"]) )
 
 		<label class="w3-label">Category Name:</label>
 		<input class="w3-input w3-border w3-animate-input w3-small" type="Text" name="cat_title" style="width: 30%" required>
-		<br>
+		<br/>
 
 		<label class="w3-label">Category Description:</label>
 		<textarea class="w3-input w3-border w3-animate-input w3-small" type="Text" name="cat_desc" style="width: 30%" required></textarea> 
-		<br>
+		<br/>
+
+		<label calss="w3-label">Category Type:</label>
+		<select class="w3-input w3-select w3-border" name="cat_type" style="width: 30%" required>
+			<option value=""></option>
+			<option value="CODE">Code Snipets hosted on Gist</option>
+			<option value="DOCS">Uploaded Document links</option>
+		</select>
+		<br/>
 
 		<input class="w3-btn w3-blue" type="submit"><br><br>
 

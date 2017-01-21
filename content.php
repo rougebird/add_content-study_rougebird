@@ -61,11 +61,11 @@ $_SESSION['url'] = $_SERVER['REQUEST_URI'];
   				//echo $cat;
   				switch($cat)
 				{
-					case "SAM": $tab="content_sa_m"; 
+					case "SAM": $tab="content_cat4"; 
 								echo "<h5>System Administration Reference Material</h5>";break;
 					case "SAL": $tab="content_sa_l"; 
 								echo "<h5>System Administration Lab Experiments</h5>"; break;
-					case "CSM": $tab="content_cs_m";
+					case "CSM": $tab="content_cat1";
 								echo "<h5>C# .NET Programming Reference Material</h5>"; break;
 					case "MIS": $tab="content_store";
 								echo "<h5>Miscellaneous Reference Material</h5>";break;
@@ -82,7 +82,7 @@ $_SESSION['url'] = $_SERVER['REQUEST_URI'];
     				// output data of each row
     				while($row = mysqli_fetch_assoc($result)) {
         				echo "<tr>";
-        				echo "<td >" . $row["content_id"]. "</td><td>" . $row["content_up_date"]. "</td><td>" . $row["content_title"]. "</td><td>" . $row["content_desc"]. "</td><td><a class='w3-btn w3-blue w3-hover-red w3-ripple  ' href='". $row["content_down_link"]."' >Download <i class='fa fa-download'></i></a></td>";
+        				echo "<td >" . $row["content_id"]. "</td><td>" . $row["content_up_date"]. "</td><td>" . $row["content_title"]. "</td><td>" . $row["content_desc"]. "</td><td><a class='w3-btn w3-blue w3-hover-red w3-ripple  ' href='". $row["content_link"]."' >Download <i class='fa fa-download'></i></a></td>";
     					echo "</tr>";
     				}
 				} else {
